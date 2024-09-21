@@ -1,5 +1,5 @@
 @extends('layouts.landing')
-
+@section('home', 'active')
 @section('content')
             
         <!-- Main Banner -->

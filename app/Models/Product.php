@@ -15,5 +15,10 @@ class Product extends Model
         'description',
         'price',
         'stock',
+        'slug',
     ];
+    public function carts()
+    {
+        return $this->hasMany(Cart::class);
+    }
 }

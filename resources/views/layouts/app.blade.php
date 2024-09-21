@@ -36,6 +36,16 @@
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets-admin/images/neptune.png') }}" />
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets-admin/images/neptune.png') }}" />
 
+    <link rel="stylesheet" href="https://cdn.ckeditor.com/ckeditor5/42.0.2/ckeditor5.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+    <style>
+        .cke_notification_warning {
+            display: none;
+        }
+    </style>
+
+    
+
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -224,7 +234,15 @@
         </script>
     @endif
 
+    
+
     <!-- Javascripts -->
+    <script src="https://cdn.ckeditor.com/ckeditor5/42.0.2/ckeditor5.js"></script>
+    <script>
+        CKEDITOR.replace('editor'); 
+    </script>
+
+
     <script src="{{ asset('assets-admin/plugins/jquery/jquery-3.5.1.min.js') }}"></script>
     <script src="{{ asset('assets-admin/plugins/bootstrap/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('assets-admin/plugins/perfectscroll/perfect-scrollbar.min.js') }}"></script>
