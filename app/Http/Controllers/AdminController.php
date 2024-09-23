@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Support\Str;
+use App\Models\ProductOrder;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -89,5 +91,41 @@ class AdminController extends Controller
         $product = Product::find($id);
         $product->delete();
         return redirect()->route('admin.product');
+    }
+
+    // Order
+    public function order()
+    {
+        $orders = Order::all();
+        $pending = Order::where('status', 'pending')->get();
+        $confirmed = Order::where('status', 'confirmed')->get();
+        $rejected = Order::where('status', 'rejected')->get();
+        $processing = Order::where('status', 'processing')->get();
+        $shipped = Order::where('status', 'shipped')->get();
+        $delivered = Order::where('status', 'delivered')->get();
+        return view('admin.order', compact('orders', 'pending', 'confirmed', 'rejected', 'processing', 'shipped', 'delivered'));
+    }
+
+    public function orderDetail($code_order)
+    {
+        $order = Order::where('code_order', $code_order)->first();
+        $productOrder = ProductOrder::where('code_order', $code_order)->get();
+        $totalPrice = $productOrder->sum('total_price');
+        return view('admin.order-detail', compact('order', 'productOrder', 'totalPrice'));
+    }
+
+    public function orderUpdate(Request $request)
+    {
+        $request->validate([
+            'code_order' => 'required',
+            'status' => 'required',
+            'notes' => 'nullable',
+        ]);
+
+        $order = Order::where('code_order', $request->code_order)->first();
+        $order->status = $request->status;
+        $order->notes_from_admin = $request->notes;
+        $order->save(); 
+        return redirect()->route('admin.order.detail', $request->code_order)->with('success', 'Status pesanan berhasil diupdate');
     }
 }

@@ -29,6 +29,11 @@ Route::post('/registerPost', [AuthController::class, 'registerPost'])->name('reg
 // logout
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
+// contact
+Route::get('/contact', [AuthController::class, 'contact'])->name('contact');
+
+// about
+Route::get('/about', [AuthController::class, 'about'])->name('about');
 
 // Navigate
 Route::get('/product', [AuthController::class, 'product'])->name('product');
@@ -45,6 +50,11 @@ Route::group(['middleware' => ['auth.check:admin']], function () {
     Route::get('/product/edit/{id}', [AdminController::class, 'productEdit'])->name('admin.product.edit');
     Route::post('/product/update', [AdminController::class, 'productUpdate'])->name('admin.product.update');
     Route::get('/product/delete/{id}', [AdminController::class, 'productDelete'])->name('admin.product.destroy');
+
+    // Order
+    Route::get('/admin/order', [AdminController::class, 'order'])->name('admin.order');
+    Route::get('/order-detail/{code_order}', [AdminController::class, 'orderDetail'])->name('admin.order.detail');
+    Route::post('/order/update/', [AdminController::class, 'orderUpdate'])->name('admin.order.update');
 });
 
 // user middleware
@@ -56,5 +66,10 @@ Route::group(['middleware' => ['auth.check:user']], function () {
     // checkout
     Route::get('/checkout-page/{code_order}', [UserController::class, 'checkoutPage'])->name('checkout.page');
     Route::post('/checkout', [UserController::class, 'checkout'])->name('checkout');
+    Route::get('/success-checkout/{code_order}', [UserController::class, 'successCheckout'])->name('success.checkout');
+
+    // order detail
+    Route::get('/order', [UserController::class, 'order'])->name('order');
+    Route::get('/order-detail/{code_order}', [UserController::class, 'orderDetail'])->name('order.detail');
 });
 

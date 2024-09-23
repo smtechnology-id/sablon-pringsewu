@@ -99,7 +99,13 @@
                             <div class="cart-area">
                                 <a href="{{ route('cart') }}">
                                     <i class='bx bx-cart'></i>
-                                    <span>1</span>
+                                    <span>{{ $cartCount }}</span>
+                                </a>
+                            </div>
+                            <div class="cart-area">
+                                <a href="{{ route('order') }}">
+                                    <i class='bx bx-package'></i> <!-- Ganti ikon pengguna dengan ikon paket -->
+                                    <span>{{ $orderCount }}</span>
                                 </a>
                             </div>
                             <div class="menu-btn">
@@ -150,128 +156,123 @@
     <!-- Footer Area -->
     <footer class="footer-area">
         <div class="container">
+
             <div class="footer-contact">
+
                 <div class="row justify-content-center">
                     <div class="col-lg-4 col-md-4">
+
                         <div class="footer-card">
+
                             <i class='bx bx-time'></i>
-                            <h3>Sun - Thu : 10:00 AM - 06:00 PM</h3>
+
+                            <h3>Sen - Kam : 10:00 - 18:00</h3> <!-- Diubah ke bahasa Indonesia -->
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-lg-4 col-md-4">
+
+                        <div class="footer-card">
+
+                            <i class='bx bxs-map'></i>
+
+                            <h3>28/A Jalan, Pringsewu, Indonesia</h3> <!-- Diubah alamat -->
+
                         </div>
                     </div>
 
-                    <div class="col-lg-4 col-md-4">
-                        <div class="footer-card">
-                            <i class='bx bxs-map'></i>
-                            <h3>28/A Street, New York City, USA</h3>
-                        </div>
-                    </div>
 
                     <div class="col-lg-4 col-md-4">
                         <div class="footer-card">
                             <i class='bx bxs-phone-call'></i>
+
                             <h3 class="media-tel">
-                                <a href="tel:+19876543210">+1 987 6543 210</a>
+
+                                <a href="tel:+628123456789">+62 812 3456 789</a> <!-- Diubah nomor telepon -->
+
                             </h3>
+
                         </div>
+
                     </div>
                 </div>
+
             </div>
+
 
             <div class="footer-top-list pb-70">
                 <div class="row justify-content-center">
-                    <div class="col-lg-4 col-md-4">
+                    <div class="col-lg-6 col-md-6">
                         <div class="footer-list">
-                            <h3>Services</h3>
+                            <h3>Tautan Cepat</h3> <!-- Diubah ke bahasa Indonesia -->
                             <ul>
+
                                 <li>
+
                                     <i class='bx bxs-chevron-right'></i>
-                                    <a href="services.html">Brand Identy</a>
+
+                                    <a href="{{ route('index') }}">Beranda</a> <!-- Diubah ke bahasa Indonesia -->
+                                </li>
+
+                                <li>
+
+                                    <i class='bx bxs-chevron-right'></i>
+
+                                    <a href="{{ route('product') }}">Layanan</a> <!-- Diubah ke bahasa Indonesia -->
+                                </li>
+                                <li>
+
+                                    <i class='bx bxs-chevron-right'></i>
+                                    <a href="{{ route('about') }}">Tentang Kami</a> <!-- Diubah ke bahasa Indonesia -->
                                 </li>
                                 <li>
                                     <i class='bx bxs-chevron-right'></i>
-                                    <a href="services.html">Package Design</a>
-                                </li>
-                                <li>
-                                    <i class='bx bxs-chevron-right'></i>
-                                    <a href="services.html">Pattern Design</a>
-                                </li>
-                                <li>
-                                    <i class='bx bxs-chevron-right'></i>
-                                    <a href="services.html">T-shirt Print</a>
-                                </li>
-                                <li>
-                                    <i class='bx bxs-chevron-right'></i>
-                                    <a href="services.html">Book Covers</a>
-                                </li>
-                                <li>
-                                    <i class='bx bxs-chevron-right'></i>
-                                    <a href="services.html">CD-DVD Covers</a>
+                                    <a href="{{ route('contact') }}">Kontak</a> <!-- Diubah ke bahasa Indonesia -->
+
                                 </li>
                             </ul>
                         </div>
+
                     </div>
 
-                    <div class="col-lg-3 col-md-3">
-                        <div class="footer-list">
-                            <h3>Quick Links</h3>
-                            <ul>
-                                <li>
-                                    <i class='bx bxs-chevron-right'></i>
-                                    <a href="index.html">Home</a>
-                                </li>
-                                <li>
-                                    <i class='bx bxs-chevron-right'></i>
-                                    <a href="services.html">Service</a>
-                                </li>
-                                <li>
-                                    <i class='bx bxs-chevron-right'></i>
-                                    <a href="about.html">About Us</a>
-                                </li>
-                                <li>
-                                    <i class='bx bxs-chevron-right'></i>
-                                    <a href="testimonial.html">Testimonial</a>
-                                </li>
-                                <li>
-                                    <i class='bx bxs-chevron-right'></i>
-                                    <a href="blog.html">Blog</a>
-                                </li>
-                                <li>
-                                    <i class='bx bxs-chevron-right'></i>
-                                    <a href="contact.html">Contact</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+                    <div class="col-lg-6 col-md-6">
 
-                    <div class="col-lg-5 col-md-5">
                         <div class="footer-side-list">
-                            <h3>Contact Us</h3>
+
+                            <h3>Hubungi Kami</h3> <!-- Diubah ke bahasa Indonesia -->
+
                             <ul>
+
                                 <li>
                                     <i class='bx bxs-phone'></i>
-                                    <a href="tel:+11234567891">+1 1234 56 7891</a>
+
+                                    <a href="tel:+628123456789">+62 812 3456 789</a> <!-- Diubah nomor telepon -->
                                 </li>
                                 <li>
                                     <i class='bx bxs-phone'></i>
-                                    <a href="tel:+19876543210">+1 9876 543 210</a>
+                                    <a href="tel:+628987654321">+62 898 7654 321</a> <!-- Diubah nomor telepon -->
                                 </li>
                                 <li>
                                     <i class='bx bxl-telegram'></i>
-                                    <a href="mailto:email@pixis.com">email@pixis.com</a>
+                                    <a href="mailto:email@contoh.com">email@contoh.com</a> <!-- Diubah email -->
                                 </li>
                                 <li>
                                     <i class='bx bxl-telegram'></i>
-                                    <a href="mailto:hello@pixis.com">hello@pixis.com</a>
+                                    <a href="mailto:hello@contoh.com">hello@contoh.com</a> <!-- Diubah email -->
                                 </li>
                                 <li>
                                     <i class='bx bxs-map'></i>
-                                    28/A Street, New York, USA
+                                    28/A Jalan, Pringsewu, Indonesia <!-- Diubah alamat -->
                                 </li>
                             </ul>
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
 
         <div class="footer-bottom">
@@ -279,32 +280,48 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-4 col-md-3">
                         <div class="footer-logo">
-                            <img src="{{ asset('assets/img/footer-logo.png') }}" alt="Footer Logo">
+
+                            <img src="{{ asset('assets/img/footer-logo.png') }}" alt="Logo Footer">
+
                         </div>
+
                     </div>
 
                     <div class="col-lg-8 col-md-9">
                         <div class="bottom-text">
-                            <p>© Pixis is Proudly Owned by <a href="https://hibootstrap.com/"
-                                    target="_blank">HiBootstrp</a></p>
+                            <p>© Pixis Dimiliki oleh <a href="https://hibootstrap.com/"
+                                    target="_blank">HiBootstrap</a></p> <!-- Diubah ke bahasa Indonesia -->
+
 
                             <ul class="social-bottom">
+
                                 <li>
+
                                     <a href="https://www.facebook.com/login/"><i class='bx bxl-facebook'></i></a>
+
                                 </li>
+
                                 <li>
+
                                     <a href="https://twitter.com/i/flow/login"><i class='bx bxl-twitter'></i></a>
+
                                 </li>
                                 <li>
                                     <a href="https://www.instagram.com/accounts/login/"><i
                                             class='bx bxl-instagram'></i></a>
+
                                 </li>
+
                             </ul>
                         </div>
+
                     </div>
                 </div>
+
             </div>
+
         </div>
+
     </footer>
     <!-- Footer Area End -->
 

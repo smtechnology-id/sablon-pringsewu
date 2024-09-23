@@ -12,7 +12,8 @@ class AuthController extends Controller
 {
     public function index()
     {
-        return view('landing');
+        $products = Product::take(3)->get();
+        return view('landing', compact('products'));
     }
 
     public function login()

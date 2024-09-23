@@ -91,53 +91,10 @@
                             <a href="{{ route('admin.product') }}" class="active"><i
                                     class="material-icons-two-tone">inventory</i>Product</a>
                         </li>
-                      
-                    @elseif (Auth::user()->level == 'duta')
-                        <li class="@yield('active_dashboard')">
-                            <a href="{{ route('duta.dashboard') }}" class="active"><i
-                                    class="material-icons-two-tone">dashboard</i>Dashboard</a>
-                        </li>
-                        <li class="@yield('active_data_siswa')">
-                            <a href="#"><i class="material-icons-two-tone">people</i>Data Siswa<i
-                                    class="material-icons has-sub-menu">keyboard_arrow_right</i></a>
-                            <ul class="sub-menu">
-                                <li>
-                                    <a href="{{ route('duta.siswa.create') }}">Create New</a>
-                                    <a href="{{ route('duta.siswa') }}">Data Siswa</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="@yield('menu_laporan')">
-                            <a href="#"><i class="material-icons-two-tone">report</i>Laporan<i
-                                    class="material-icons has-sub-menu">keyboard_arrow_right</i></a>
-                            <ul class="sub-menu">
-                                <li>
-                                    <a href="{{ route('duta.laporan.create') }}">Create New</a>
-                                    <a href="{{ route('duta.laporan') }}">Data Laporan</a>
-                                </li>
-                            </ul>
-                        </li>
-                    @elseif (Auth::user()->level == 'puskesmas')
-                        <li class="@yield('active_dashboard')">
-                            <a href="{{ route('puskesmas.dashboard') }}" class="active"><i
-                                    class="material-icons-two-tone">dashboard</i>Dashboard</a>
-                        </li>
-                        <li class="@yield('active_laporan')">
-                            <a href="{{ route('puskesmas.laporan') }}" class="active"><i
-                                    class="material-icons-two-tone">report</i>Laporan</a>
-                        </li>
-                    @elseif (Auth::user()->level == 'guru')
-                        <li class="@yield('active_dashboard')">
-                            <a href="{{ route('guru.dashboard') }}" class="active"><i
-                                    class="material-icons-two-tone">dashboard</i>Dashboard</a>
-                        </li>
-                        <li class="@yield('active_laporan')">
-                            <a href="{{ route('guru.laporan') }}" class="active"><i
-                                    class="material-icons-two-tone">report</i>Laporan</a>
-                        </li>
-                        <li class="@yield('active_data_duta_belia')">
-                            <a href="{{ route('guru.dataDutaBelia') }}" class="active"><i
-                                    class="material-icons-two-tone">people</i>Duta Belia</a>
+                        {{-- Pesanan Masuk --}}
+                        <li class="@yield('active_order')">
+                            <a href="{{ route('admin.order') }}" class="active"><i
+                                    class="material-icons-two-tone">inventory</i>Pesanan Masuk</a>
                         </li>
                     @endif
 

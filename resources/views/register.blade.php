@@ -1,25 +1,7 @@
 @extends('layouts.landing')
 
 @section('content')
-    <!-- Inner Banner -->
-    <div class="inner-banner inner-bg2">
-        <div class="container">
-            <div class="inner-title">
-                <h3>Register</h3>
-                <ul>
-                    <li>
-                        <a href="index.html">Home</a>
-                    </li>
-                    <li>
-                        <i class='bx bxs-chevrons-right'></i>
-                    </li>
-                    <li>Register</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <!-- Inner Banner End -->
-
+   
     <!-- Start Sing In Area -->
     <section class="sing-in-area ptb-100">
         <div class="container">

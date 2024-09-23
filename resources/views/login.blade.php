@@ -2,22 +2,7 @@
 
 @section('content')
     <!-- Inner Banner -->
-    <div class="inner-banner inner-bg2">
-        <div class="container">
-            <div class="inner-title">
-                <h3>Sign In</h3>
-                <ul>
-                    <li>
-                        <a href="index.html">Home</a>
-                    </li>
-                    <li>
-                        <i class='bx bxs-chevrons-right'></i>
-                    </li>
-                    <li>Sign In</li>
-                </ul>
-            </div>
-        </div>
-    </div>
+
     <!-- Inner Banner End -->
 
     <!-- Start Sing In Area -->

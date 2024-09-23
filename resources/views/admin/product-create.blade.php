@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('active_product', 'active-page')
 @section('content')
     <div class="container">
         <div class="row">

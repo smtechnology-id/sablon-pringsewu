@@ -41,12 +41,9 @@ class UserController extends Controller
         }
 
         if ($request->hasFile('design')) {
-            // Pastikan untuk menjalankan perintah artisan storage:link
             $design = $request->file('design')->store('designs', 'public');
-            $desainName = $request->file('design')->getClientOriginalName();
         } else {
             $design = null;
-            $desainName = null;
         }
         $cart = new Cart();
         $cart->user_id = auth()->user()->id;
@@ -54,7 +51,7 @@ class UserController extends Controller
         $cart->quantity = $request->quantity;
         $cart->size = $request->size;
         $cart->notes = $request->notes;
-        $cart->design = $desainName;
+        $cart->design = $design;
         $cart->save();
         return redirect()->route('cart')->with('success', 'Product added to cart');
     }
@@ -66,9 +63,8 @@ class UserController extends Controller
         return redirect()->route('cart')->with('success', 'Product removed from cart');
     }
 
-    public function prosesCo(Request $request)
+    public function checkout(Request $request)
     {
-        dd($request->all());
         $request->validate([
             'address' => 'required|string',
             'payment_proof' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
@@ -79,6 +75,9 @@ class UserController extends Controller
         $cart = Cart::where('user_id', auth()->user()->id)->get();
         foreach ($cart as $cart) {
             $order = new ProductOrder();
+            if ($cart->design) {
+                $order->design = $cart->design;
+            }
             $order->user_id = auth()->user()->id;
             $order->code_order = $request->code_order;
             $order->product_id = $cart->product_id;
@@ -88,27 +87,49 @@ class UserController extends Controller
             $order->total_price = $cart->product->price * $cart->quantity;
             $order->save();
         }
-
-        // Hapus Data dari Cart
-        Cart::where('user_id', auth()->user()->id)->delete();
+       
 
         // Masukkan Data ke Order
         $order = new Order();
         $order->user_id = auth()->user()->id;
         $order->code_order = $request->code_order;
         $order->address = $request->address;
-        $order->payment_proof = $request->payment_proof;
+        if ($request->hasFile('payment_proof')) {
+            $payment_proof = $request->file('payment_proof')->store('payment_proof', 'public');
+            $order->payment_proof = $payment_proof;
+        }
         $order->status = 'pending';
         $order->save();
-        
+
+        // Hapus Data dari Cart
+        Cart::where('user_id', auth()->user()->id)->delete();
         // Redirect ke halaman success
-        return redirect()->route('cart')->with('success', 'Checkout Success');
+        return redirect()->route('success.checkout', $request->code_order)->with('success', 'Checkout Success');
+    }
+
+    public function successCheckout($code_order)
+    {
+        return view('success-checkout', compact('code_order'));
     }
 
     public function checkoutPage($code_order)
     {
+        $code_order = $code_order;
         $order = Order::where('code_order', $code_order)->get();
         $productOrder = ProductOrder::where('code_order', $code_order)->get();
-        return view('checkout-page', compact('order', 'productOrder'));
+        return view('checkout-page', compact('order', 'productOrder', 'code_order'));
+    }
+
+    // Order
+    public function order()
+    {
+        $order = Order::where('user_id', auth()->user()->id)->get();
+        return view('order', compact('order'));
+    }
+    public function orderDetail($code_order)
+    {
+        $order = Order::where('code_order', $code_order)->first();
+        $productOrder = ProductOrder::where('code_order', $code_order)->get();
+        return view('detail-order', compact('order', 'productOrder', 'code_order'));
     }
 }
