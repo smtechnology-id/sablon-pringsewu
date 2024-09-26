@@ -53,7 +53,7 @@ Route::group(['middleware' => ['auth.check:admin']], function () {
 
     // Order
     Route::get('/admin/order', [AdminController::class, 'order'])->name('admin.order');
-    Route::get('/order-detail/{code_order}', [AdminController::class, 'orderDetail'])->name('admin.order.detail');
+    Route::get('/admin/order-detail/{code_order}', [AdminController::class, 'orderDetail'])->name('admin.order.detail');
     Route::post('/order/update/', [AdminController::class, 'orderUpdate'])->name('admin.order.update');
 });
 

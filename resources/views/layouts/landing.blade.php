@@ -77,7 +77,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="about.html" class="nav-link @yield('about')">
+                                <a href="{{ route('about') }}" class="nav-link @yield('about')">
                                     About
                                 </a>
                             </li>
@@ -87,7 +87,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="contact.html" class="nav-link @yield('contact')">
+                                <a href="{{ route('contact') }}" class="nav-link @yield('contact')">
                                     Contact
                                 </a>
                             </li>

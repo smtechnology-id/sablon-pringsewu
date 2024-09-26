@@ -83,5 +83,16 @@ class AuthController extends Controller
         $product = Product::where('slug', $slug)->first();
         return view('product-detail', compact('product'));
     }
-    
+
+    // About
+    public function about()
+    {
+        return view('about');
+    }
+
+    // Contact
+    public function contact()
+    {
+        return view('contact');
+    }
 }
